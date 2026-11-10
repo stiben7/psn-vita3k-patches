@@ -1,0 +1,5 @@
+# Patch and cheat files must keep LF line endings: Vita3K on Android counts a trailing CR as an extra byte and corrupts the patch.
+*.txt text eol=lf
+*.psv text eol=lf
+*.bat text eol=crlf
+*.md text eol=lf

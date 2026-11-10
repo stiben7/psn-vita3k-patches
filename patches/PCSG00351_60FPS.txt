@@ -1,0 +1,11 @@
+# Phantasy Star Nova (PCSG00351) 60 fps patch for Vita3K -- for game VERSION 1.05 (the version Vita3K logs as "Version: 1.05").
+# These offsets are NOT valid for v1.00; the two builds have different layouts (v1.00 main segment ends at 0x813D1E70, v1.05 at 0x8246BF90).
+#
+# The game's frame manager paces frames at 60 / [manager+0xcc] vblanks. Its constructor (v1.05: 0x81a24...) sets [+0xcc] = 60, but the
+# game's init code then runs
+#     0x8178c5f2: movs r1, #0x1e         ; 30
+#     0x8178c5f4: str.w r1, [r0, #0xcc]
+# which is the 30 fps cap. The patch changes that immediate from 0x1e to 0x3c (60): bytes 1e 21 -> 3c 21.
+# (v1.00 equivalent, for reference only: 0:0x730DDE.)  Segment 0 starts at 0x81000000, so 0x8178c5f2 is offset 0x78C5F2.
+[eboot.bin]
+0:0x78C5F2 0x3C 0x21

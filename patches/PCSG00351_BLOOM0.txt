@@ -1,0 +1,11 @@
+# Phantasy Star Nova (PCSG00351) v1.05 - bloom strength 0 (bloom passes keep running, so the screen stays correctly coloured).
+# NOT valid for v1.00. EXPERIMENTAL.
+#
+# The combiner pass setup (function 0x81a7f5d6) builds a vec4 constant (idx 1) from the post-process settings:
+#     0x81a7f61a: vldr s0,[r0]      ; scene weight  (0.636 in game)  -> constant .w
+#     0x81a7f61e: vldr s1,[r0,#4]   ; bloom weight  (0.364 in game)  -> constant .xyz
+# (the two weights sum to 1 and the game recomputes them every frame, so poking memory does not stick).
+# The patch replaces them with  vmov.f32 s0,#1.0 ; vsub.f32 s1,s0,s0  -> scene 1.0, bloom 0.0.
+# Segment 0 starts at 0x81000000, so 0x81a7f61a is offset 0xA7F61A.
+[eboot.bin]
+0:0xA7F61A 0xB7 0xEE 0x00 0x0A 0x70 0xEE 0x40 0x0A
