@@ -7,6 +7,7 @@ Memory patches and cheats for **Phantasy Star Nova** (ファンタシースタ�
 | `PCSG00351_60FPS.txt` | Unlocks 60 fps (the game caps its frame manager at 30) |
 | `PCSG00351_CAMERA.txt` | Right-stick camera sensitivity 65%, meant for use with the 60 fps patch |
 | `PCSG00351_BLOOM20.txt` | Bloom at 20% of stock strength (brightness is preserved) |
+| `PCSG00351_BLOOM50.txt` | Bloom at 50% of stock strength (brightness is preserved) |
 | `PCSG00351_BLOOM0.txt` | Bloom completely off (colours stay normal) |
 
 `cheats/PCSG00351.psv` holds the same effects as toggleable cheats in Vita3K (**Manage Cheats**), plus **Bloom 50%** and a **Bloom 100% (stock)** entry that restores the original code.
@@ -18,7 +19,7 @@ Memory patches and cheats for **Phantasy Star Nova** (ファンタシースタ�
 
 - **Patch files** (`patches/*.txt`) are applied automatically every time the game launches. Easiest to set and forget.
 - **Cheats** (`cheats/PCSG00351.psv`) are ticked in Vita3K's Manage Cheats menu and can be switched on and off. Use these to try different bloom strengths.
-- Don't enable a bloom patch file and a bloom cheat at the same time, and tick only one bloom cheat at a time. They change the same spot.
+- The bloom patches (`BLOOM0`, `BLOOM20`, `BLOOM50`) all change the same spot: use **only one** bloom patch file, and don't combine it with a bloom cheat. Tick only one bloom cheat at a time.
 
 ## PC (Windows)
 
@@ -62,5 +63,5 @@ Disabling the game's own bloom flag instead made the screen render cyan, which i
 
 ## Notes
 
-- Tested in-game: 60 fps, camera, Bloom 0% (patch file, PC) and Bloom 20% (cheat on PC, patch file on Android). Bloom 50% has not been tested yet.
+- Tested in-game: 60 fps, camera, Bloom 0% (patch file, PC) and Bloom 20% (cheat on PC, patch file on Android). The Bloom 50% patch file and cheat have not been tested yet.
 - Offsets are relative to segment 0 of the game's `eboot.bin`, which Vita3K loads at `0x81000000`.
